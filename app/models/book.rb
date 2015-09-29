@@ -1,5 +1,8 @@
 class Book < ActiveRecord::Base
 
+	has_many :book_genres
+	has_many :genres, through: :book_genres
+
 	scope :finished, ->{ where.not(finished_on: nil) } #checks if book is not finished
 	scope :recent, ->{ where('finished_on > ?', 2.days.ago) } #recent scope
 

@@ -7,8 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Book.destroy_all
+Genre.destroy_all
 
-Book.create!([{ title: "Hyperion",  author: "Copenhagen", description: "Some description, cool!", amazon_id: "0553283685",
-				 rating: 5, finished_on: 5.days.ago  }])
+fiction = Genre.create!(name: 'Fiction')
+non_fiction = Genre.create!(name: 'Non-fiction')
+apple = Genre.create!(name: 'Apple')
+
+Book.create!([{ title: "Hyperion",  author: "Leander Kahney", description: "Dummy text Bugag. Some description, cool!", amazon_id: "159184617X",
+				 rating: 3, finished_on: 2.days.ago, genres: [apple]  }, 
+
+				{ title: "Jony Ive: The Genius behinf apple products",  author: "Copenhagen", description: "Some description, cool!", amazon_id: "0553283685",
+				 rating: 5, finished_on: 5.days.ago, genres: [fiction, apple]  } ])
 
 p "Created #{Book.count} books"
