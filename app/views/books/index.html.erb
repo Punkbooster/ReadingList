@@ -65,7 +65,7 @@
       <ul class="list-unstyled">
             <% @genres.each do |genre| %>
               <li>
-                <a href='#' class='label label-primary'><%= genre.name %></a>
+              <%= link_to genre.name, books_path(filter: genre.name), class: 'label label-primary' %>
               </li>
             <% end %>
       </ul>
